@@ -15,23 +15,17 @@ dependencies:
     - systemd-devel [platform:rpm]
     - gcc [platform:rpm]
     - python39-devel [platform:rpm]
+    - vim-enhanced [platform:rpm]
   python_interpreter:
     package_system: "python39"
 
 options:
   package_manager_path: /usr/bin/microdnf
 
-  #additional_build_files:
-  #  - src: ansible.cfg
-  #    dest: configs
+additional_build_files:
+  - src: ansible.cfg
+    dest: configs
 
 additional_build_steps:
   prepend_galaxy:
-    #- COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
-    - ENV ANSIBLE_GALAXY_SERVER_LIST='automation_hub, galaxy_default'
-    - ENV ANSIBLE_GALAXY_SERVER_GALAXY_DEFAULT_URL=https://galaxy.ansible.com/
-    - ENV ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_URL=https://console.redhat.com/api/automation-hub/content/published/
-    - ENV ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_AUTH_URL=https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
-    - ARG ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_TOKEN
-      # ensure this last variable is set in your environment and contains your offline access token
-      # add '--build-args=ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_TOKEN=${your_env_var}' to your ansible-builder command
+    - COPY _build/configs/ansible.cfg /etc/ansible/ansible.cfg
