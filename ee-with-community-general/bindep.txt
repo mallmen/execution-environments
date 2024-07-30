@@ -1,8 +1,0 @@
-python3-pip [platform:rpm]
-python3-dnf [platform:rpm]
-openssh-clients  [platform:rpm]
-patch [platform:rpm]
-gzip [platform:rpm]
-genisoimage [platform:rpm]
-jq [platform:rpm]
-rsync [platform:rpm]
