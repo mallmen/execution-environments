@@ -1,0 +1,22 @@
+---
+version: 3
+
+dependencies:
+  ansible_core:
+    package_pip: ansible-core
+  ansible_runner:
+    package_pip: ansible-runner
+  #system: bindep.txt
+  galaxy: requirements.yml
+  #python: requirements.txt
+
+images:
+  base_image:
+    name: registry.redhat.io/ansible-automation-platform-24/ee-minimal-rhel9:1.0
+
+options:
+  package_manager_path: /usr/bin/microdnf
+
+#additional_build_steps:
+#  prepend_base:
+#    - ENV PKGMGR_OPTS="--nodocs --setopt=install_weak_deps=0 --setopt=rhocp-4.15-for-rhel-9-x86_64-rpms.enabled=true"
